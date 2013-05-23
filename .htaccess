@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(config/) - [F,L,NC]
+RewriteRule ^u/(.+)$ u/index.php?u=$1 [L,QSA]
+RewriteRule ^clan/(.+)$ clan/index.php?c=$1 [L,QSA]
+RewriteRule ^stat/(.+)$ stat/index.php?s=$1 [L,QSA]
+RewriteRule ^cstat/(.+)$ cstat/index.php?s=$1 [L,QSA]
+RewriteRule ^achievement/(.+)$ achievement/index.php?a=$1 [L,QSA]
+RewriteRule ^match/(.+)$ match/index.php?id=$1 [L,QSA]
+RewriteRule ^(.*)\.html$ $1.php [L]

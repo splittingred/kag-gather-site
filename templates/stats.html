@@ -1,0 +1,27 @@
+
+<div class="page">
+<center><h2>Gather Rankings</h2></center>
+<br />
+<p>Ranks are based on a complex algorithm involving wins, losses, kills, deaths and play time. You will not be ranked until you play at least 8 gather matches.</p>
+
+<br />
+<p>You may click on a name to view more detailed stats. Click on a specific stat to view rankings for that stat.</p>
+<br />
+
+<ol>
+{% for rank in ranks %}
+    <li><strong>{% for u in rank.users %}<a href="u/{{ u.url }}">{{ u.name }}</a>{{ loop.last ? '' : ', ' }}{% endfor %}</strong> - {{ rank.score }}</li>
+{% endfor %}
+</ol>
+
+<p>&nbsp;</p>
+
+
+<p><strong>You may also view:</strong></p>
+<ul>
+<li><a href="clans.html">Clan Rankings</a></li>
+<li><a href="achievements.html">Achievements</a></li>
+<li><a href="matches.html">Match Archives</a></li>
+</ul>
+
+</div>

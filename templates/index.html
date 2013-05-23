@@ -1,0 +1,16 @@
+
+<div class="left">
+  <ul class="rslides">
+	<li><a href=""><img src="images/slideshow/newbot20.png" align="middle" alt=""></a> </li>
+    <li><a href="http://www.kag2d.com"><img src="images/slideshow/kagdownload.png" align="middle" alt=""></a> </li>
+    <li><a href="https://forum.kag2d.com/social-forums/kag-gather.545/"><img src="images/slideshow/joinforum.png" align="middle" alt=""></a> </li>
+    </ul>
+</div>
+<div class="news">
+  <div class="cutenews">
+{% autoescape false %}
+    {{ news }}
+{% endautoescape %}
+  </div>
+</div>
+<script type="text/javascript">$(function() { $(".rslides").responsiveSlides(); });</script>

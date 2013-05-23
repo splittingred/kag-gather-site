@@ -1,0 +1,16 @@
+<div class="page">
+
+<h2>{{ name }}</h2>
+
+<p>This stat has occurred {{times|number_format}} times.</p>
+
+<br />
+
+<ol>
+{% for user in results %}
+    <li><a href="u/{{ user.user }}">{{ user.user }}</a> - {{ user.times|number_format }}</li>
+{% endfor %}
+</ol>
+
+<br class="clear" />
+</div>

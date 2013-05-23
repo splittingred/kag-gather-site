@@ -1,0 +1,58 @@
+
+<div class="page">
+<center><h2>Achievements</h2></center>
+<br />
+<p></p>
+
+<br />
+<p>You may click on an achievement to view more detailed stats. Collect all {{ total }}!</p>
+<br />
+
+<ol>
+{% for ach in achievements %}
+    <li><strong><a href="achievement/{{ ach.url }}">{{ ach.name }}</a></strong>: {{ ach.description }} - <em style="font-size: .8em;">{{ ach.winners }} Users</em></li>
+{% endfor %}
+</ol>
+
+<p>&nbsp;</p>
+
+Page:
+{% for page in radius(currentPage,3,totalPages) %}
+  <a href="achievements.html?page={{ page }}">{{ page }}</a>
+  {{ loop.last ? '' : ' | ' }}
+{% endfor %}
+
+<br /><br /><br />
+
+<h2>Recently Earned Achievements</h2>
+
+<br />
+
+<ol class="recent-achievements">
+{% for ach in recent %}
+    <li>
+        <span class="created_at">{{ ach.created_at }}:</span>
+        <strong><a href="u/{{ ach.kag_user|url_encode }}">{{ ach.kag_user }}</a></strong>
+         earned <strong><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></strong>
+         <em>({{ ach.description }})</em>
+    </li>
+{% endfor %}
+</ol>
+
+
+
+<br /><br /><br />
+
+<h2>Top Achievers</h2>
+
+<p>This is a list of the top 25 people who have collected the most achievements.</p>
+<br />
+
+<ol>
+{% for ach in achievers %}
+    <li><strong><a href="u/{{ ach.kag_user|url_encode }}">{{ ach.kag_user }}</a></strong>: {{ ach.achievements }}</li>
+{% endfor %}
+</ol>
+
+
+</div>

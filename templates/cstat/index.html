@@ -1,0 +1,24 @@
+<div class="page">
+
+<h2>{{ name }}</h2>
+
+<p>This stat has occurred {{times|number_format}} times.</p>
+
+<br />
+
+<ol>
+{% for clan in results %}
+    <li>
+        <strong><a href="clan/{{ clan.clan }}">{{ clan.clan }}</a></strong> - {{ clan.times|number_format }}
+        <ol style="list-style-type: lower-roman">
+            {% for user in clan.users %}
+                <li><a href="u/{{ user.user }}">{{ user.user }}</a> - {{ user.times|number_format }}</li>
+            {% endfor %}
+        </ol>
+
+    </li>
+{% endfor %}
+</ol>
+
+<br class="clear" />
+</div>

@@ -1,0 +1,8 @@
+cache/
+config.php
+config.json
+
+.settings
+.idea
+.DS_Store
+nbproject/

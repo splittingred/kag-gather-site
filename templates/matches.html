@@ -1,0 +1,21 @@
+
+<div class="page">
+<center><h2>Match Archives</h2></center>
+<br />
+<br />
+<p>You may click on a match to view more detailed stats. </p>
+<br />
+
+
+<ul>
+{% for match in matches %}
+    <li><a href="match/{{match.id}}"><em>{{ match.created_at }}</em>: #{{ match.id }} @ {{ match.server_name}}</a></li>
+{% endfor %}
+</ul>
+
+{% for page in radius(currentPage,3,totalPages) %}
+  <a href="matches.html?page={{ page }}">{{ page }}</a>
+  {{ loop.last ? '' : ' | ' }}
+{% endfor %}
+
+</div>

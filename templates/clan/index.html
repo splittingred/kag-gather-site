@@ -1,0 +1,92 @@
+<div class="page">
+<div class="inside-left">
+<h2>{{ name }}</h2>
+<h3>Rank: #{{ rank }} - Score: {{ score }}</h3>
+<p>{{ stats.wins // 1 }} wins, {{ stats.losses // 1 }} losses</p>
+<p>{{ stats.kills // 1 }} kills, {{ stats.deaths // 1 }} deaths</p>
+<p><em>Joined: {{ created_at }}</em></p>
+</div>
+
+<div class="inside-content user">
+
+<h2 style="font-size: 17px; border-bottom: 1px solid #ccc;">Members</h2>
+
+<ol>
+{% for user in user_list %}
+    <li><strong><a href="u/{{ user.url }}">{{ user.name }}</a></strong> - {{ user.score }}</li>
+{% endfor %}
+</ol>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h2 style="font-size: 17px; border-bottom: 1px solid #ccc;">Clan-Wide Stats</h2>
+
+<h3>General</h3>
+
+<ul>
+<!--<li>Matches Played: {{ stats.matches // 1 }}-->
+<li><a href="cstat/substitutions">Played as a Sub</a>: {{ stats.substitutions + stats.substituted }}{% if stats.substitutions > 0 %}<em> - Rank #{{ ranks.substitutions }}</em>{% endif %}
+<li><a href="cstat/desertions">Deserted a Match</a>: {{ stats.desertions // 1 }}{% if stats.desertions > 0 %}<em> - Rank #{{ ranks.desertions }}</em>{% endif %}
+</ul>
+
+<h3>Knight</h3>
+
+<ul>
+<li><a href="cstat/knight.kills">Kills</a>: {{ stats.knight_kills // 1}}{% if stats.knight_kills > 0 %}<em> - Rank #{{ ranks.knight_kills // 1 }}</em>{% endif %}
+<li><a href="cstat/knight.deaths">Deaths</a>: {{ stats.knight_deaths // 1 }}{% if stats.knight_deaths > 0 %}<em> - Rank #{{ ranks.knight_deaths // 1 }}</em>{% endif %}
+<li><a href="cstat/knight.matches">Matches</a>: {{ stats.knight_matches // 1 }}{% if stats.knight_matches > 0 %}<em> - Rank #{{ ranks.knight_matches // 1 }}</em>{% endif %}
+<li><a href="cstat/knight.wins">Wins</a>: {{ stats.knight_wins // 1 }}{% if stats.knight_wins > 0 %}<em> - Rank #{{ ranks.knight_wins // 1 }}</em>{% endif %}
+<li><a href="cstat/knight.losses">Losses</a>: {{ stats.knight_losses // 1 }}{% if stats.knight_losses > 0 %}<em> - Rank #{{ ranks.knight_losses // 1 }}</em>{% endif %}
+</ul>
+
+<h3>Builder</h3>
+
+<ul>
+<li><a href="cstat/builder.kills">Kills</a>: {{ stats.builder_kills // 1 }}{% if stats.builder_kills > 0 %}<em> - Rank #{{ ranks.builder_kills // 1 }}</em>{% endif %}
+<li><a href="cstat/builder.deaths">Deaths</a>: {{ stats.builder_deaths // 1 }}{% if stats.builder_deaths > 0 %}<em> - Rank #{{ ranks.builder_deaths // 1 }}</em>{% endif %}
+<li><a href="cstat/builder.matches">Matches</a>: {{ stats.builder_matches // 1 }}{% if stats.builder_matches > 0 %}<em> - Rank #{{ ranks.builder_matches // 1 }}</em>{% endif %}
+<li><a href="cstat/builder.wins">Wins</a>: {{ stats.builder_wins // 1 }}{% if stats.builder_wins > 0 %}<em> - Rank #{{ ranks.builder_wins // 1 }}</em>{% endif %}
+<li><a href="cstat/builder.losses">Losses</a>: {{ stats.builder_losses // 1 }}{% if stats.builder_losses > 0 %}<em> - Rank #{{ ranks.builder_losses // 1 }}</em>{% endif %}
+</ul>
+
+<h3>Archer</h3>
+
+<ul>
+<li><a href="cstat/archer.kills">Kills</a>: {{ stats.archer_kills // 1 }}{% if stats.archer_kills > 0 %}<em> - Rank #{{ ranks.archer_kills // 1 }}</em>{% endif %}
+<li><a href="cstat/archer.deaths">Deaths</a>: {{ stats.archer_deaths // 1 }}{% if stats.archer_deaths > 0 %}<em> - Rank #{{ ranks.archer_deaths // 1 }}</em>{% endif %}
+<li><a href="cstat/archer.matches">Matches</a>: {{ stats.archer_matches // 1 }}{% if stats.archer_matches > 0 %}<em> - Rank #{{ ranks.archer_matches // 1 }}</em>{% endif %}
+<li><a href="cstat/archer.wins">Wins</a>: {{ stats.archer_wins // 1 }}{% if stats.archer_wins > 0 %}<em> - Rank #{{ ranks.archer_wins // 1 }}</em>{% endif %}
+<li><a href="cstat/archer.losses">Losses</a>: {{ stats.archer_losses // 1 }}{% if stats.archer_losses > 0 %}<em> - Rank #{{ ranks.archer_losses // 1 }}</em>{% endif %}
+</ul>
+
+<h3>Kill Types</h3>
+
+<ul>
+<li><a href="cstat/kills.gibbed">Killed with Bombs</a>: {{ stats.kills_gibbed // 1 }}{% if stats.kills_gibbed > 0 %}<em> - Rank #{{ ranks.kills_gibbed // 1 }}</em>{% endif %}
+<li><a href="cstat/kills.hammered">Killed with Hammer</a>: {{ stats.kills_hammered // 1 }}{% if stats.kills_hammered > 0 %}<em> - Rank #{{ ranks.kills_hammered // 1 }}</em>{% endif %}
+<li><a href="cstat/kills.assisted">Killed with Catapult</a>: {{ stats.kills_assisted + stats.kills_died }}{% if stats.kills_assisted > 0 %}<em> - Rank #{{ ranks.kills_assisted // 1 }}</em>{% endif %}
+<li><a href="cstat/kills.shot">Shot with an Arrow</a>: {{ stats.kills_shot // 1 }}{% if stats.kills_shot > 0 %}<em> - Rank #{{ ranks.kills_shot // 1 }}</em>{% endif %}
+<li><a href="cstat/kills.slew">Slew with their Sword</a>: {{ stats.kills_slew // 1 }}{% if stats.kills_slew > 0 %}<em> - Rank #{{ ranks.kills_slew // 1 }}</em>{% endif %}
+<li><a href="cstat/kills.squashed">Stomped Someone to Death</a>: {{ stats.kills_squashed // 1 }}{% if stats.kills_squashed > 0 %}<em> - Rank #{{ ranks.kills_squashed // 1 }}</em>{% endif %}
+<li><a href="cstat/kills.pushed">Pushed Someone off a Ledge</a>: {{ stats.kills_pushed // 1 }}{% if stats.kills_pushed > 0 %}<em> - Rank #{{ ranks.kills_pushed // 1 }}</em>{% endif %}
+<li><a href="cstat/kills.fell">Pushed Someone to their Death</a>: {{ stats.kills_fell // 1 }}{% if stats.kills_fell > 0 %}<em> - Rank #{{ ranks.kills_fell // 1 }}</em>{% endif %}
+</ul>
+
+<h3>Death Types</h3>
+
+<ul>
+<li><a href="cstat/deaths.assisted">Crushed Under Falling Rocks</a>: {{ stats.deaths_assisted + stats.deaths_died }}{% if stats.deaths_assisted > 0 %}<em> - Rank #{{ ranks.deaths_assisted // 1 }}</em>{% endif %}
+<li><a href="cstat/deaths.gibbed">Died by a Bomb</a>: {{ stats.deaths_gibbed // 1 }}{% if stats.deaths_gibbed > 0 %}<em> - Rank #{{ ranks.deaths_gibbed // 1 }}</em>{% endif %}
+<li><a href="cstat/deaths.hammered">Hammered</a>: {{ stats.deaths_hammered // 1 }}{% if stats.deaths_hammered > 0 %}<em> - Rank #{{ ranks.deaths_hammered // 1 }}</em>{% endif %}
+<li><a href="cstat/deaths.shot">Shot by an Archer</a>: {{ stats.deaths_shot // 1 }}{% if stats.deaths_shot > 0 %}<em> - Rank #{{ ranks.deaths_shot // 1 }}</em>{% endif %}
+<li><a href="cstat/deaths.slew">Slain by a Knight</a>: {{ stats.deaths_slew // 1 }}{% if stats.deaths_slew > 0 %}<em> - Rank #{{ ranks.deaths_slew // 1 }}</em>{% endif %}
+<li><a href="cstat/deaths.squashed">Stomped to Death</a>: {{ stats.deaths_squashed // 1 }}{% if stats.deaths_squashed > 0 %}<em> - Rank #{{ ranks.deaths_squashed // 1 }}</em>{% endif %}
+<li><a href="cstat/deaths.pushed">Pushed off a Ledge</a>: {{ stats.deaths_pushed // 1 }}{% if stats.deaths_pushed > 0 %}<em> - Rank #{{ ranks.deaths_pushed // 1 }}</em>{% endif %}
+<li><a href="cstat/deaths.fell">Fell to Their Death</a>: {{ stats.deaths_fell // 1 }}{% if stats.deaths_fell > 0 %}<em> - Rank #{{ ranks.deaths_fell // 1 }}</em>{% endif %}
+<li><a href="cstat/deaths.cyanide">Committed Suicide</a>: {{ stats.deaths_cyanide // 1 }}{% if stats.deaths_cyanide > 0 %}<em> - Rank #{{ ranks.deaths_cyanide // 1 }}</em>{% endif %}
+</ul>
+
+</div>
+<br class="clear" />
+</div>

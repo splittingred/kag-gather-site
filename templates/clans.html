@@ -1,0 +1,16 @@
+
+<div class="page">
+<center><h2>Gather Clan Rankings</h2></center>
+<br />
+<p>Ranks are based on a complex algorithm involving wins, losses, kills, deaths and play time. Your clan will not be ranked until it has at least 5 gather matches logged.</p>
+
+<br />
+<p>You may click on a name to view more detailed stats. Click on a specific stat to view rankings for that stat.</p>
+<br />
+
+<ol>
+{% for rank in ranks %}
+    <li><strong>{% for u in rank.clans %}<a href="clan/{{ u.url }}">{{ u.name }}</a>{{ loop.last ? '' : ', ' }}{% endfor %}</strong> - {{ rank.score }}</li>
+{% endfor %}
+</ol>
+</div>

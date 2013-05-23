@@ -1,0 +1,50 @@
+<div class="page">
+
+<h2>{{ name }}</h2>
+
+<p>{{ description }}</p>
+
+<br />
+<div class="ach-trajectory">
+{% for ach in trajectory %}
+    {% if ach.current %}
+    <span class="current">{{ ach.name }}</span> {{ loop.last ? '' : ' -&gt; ' }}
+    {% else %}
+    <span><a href="achievement/{{ ach.code }}">{{ ach.name }}</a></span> {{ loop.last ? '' : ' -&gt; ' }}
+    {% endif %}
+{% endfor %}
+</div>
+<br />
+
+<div style="float: right; padding: 0 10px;">
+<h3>Related <a href="achievements.html">Achievements</a>:</h3>
+
+<ul>
+{% for ach in related %}
+    <li><a href="achievement/{{ ach.code|url_encode }}"><strong>{{ ach.name }}</strong></a>: {{ ach.description }}</li>
+{% endfor %}
+</ul>
+</div>
+
+<div>
+<h3>Won By:</h3>
+
+<ul>
+{% for user in users %}
+    <li><a href="u/{{ user.name }}">{{ user.name }}</a> - {{ user.value }} times</li>
+{% endfor %}
+</ul>
+
+<br /><br />
+<h3>Users Close to Achievement:</h3>
+
+<ul>
+{% for user,value in users_close %}
+    <li><a href="u/{{ user|url_encode }}">{{ user }}</a> - {{ value }} times</li>
+{% endfor %}
+</ul>
+
+</div>
+
+<br class="clear" />
+</div>

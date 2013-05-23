@@ -1,0 +1,21 @@
+<div class="page">
+
+<h2>Match #{{ id }}: {{ created_at }}</h2>
+
+<h3>Winner: {{ stats.winner }}</h3>
+
+
+{% for name,players in teams %}
+    <h3>{{ name }}</h3>
+
+    <ol>
+    {% for player_name,player in players %}
+        <li><a href="u/{{player_name}}">{{ player_name }}</a> - <em>{{ player.class }}</em> - K/D: {{ player.kills }}/{{ player.deaths }}</li>
+    {% endfor %}
+    </ol>
+{% endfor %}
+
+
+
+<br class="clear" />
+</div>
