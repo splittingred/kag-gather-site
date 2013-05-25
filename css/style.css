@@ -656,13 +656,13 @@ body {
 h2, h3, h4, h5, h6 {
 	font-family: Junicode, TypoSlabserif-Light, OratorSTD, sans-serif;
 	margin: 0;
+	padding: 0;
 	font-weight: bold;
 	color: #444;
 	
 }
 h2 {
 	font-size: 2em;
-	
 }
 
 h3 {
@@ -690,6 +690,13 @@ h3 {
 .inside-content {
     width: 70%;
     float: left;
+    text-indent: 0;
+}
+.inside-content h2 {
+    padding: 0;
+    line-height: 1.2;
+    margin: 10px 0 10px;
+	border-bottom: 1px solid #ccc;
 }
 
 .clear { clear: both; }

@@ -99,10 +99,13 @@
 </ul>
 {% endif %}
 
+{% if oppressing|length > 0 or oppressors|length > 0 %}
+<br /><br />
+<h2>Enemies</h2>
+<p>These lists show your enemies; either those you are dominating by killing more than 5 times in a row without being killed by them, or vice versa.</p>
 
 {% if oppressing|length > 0 %}
-<br /><br />
-<h2>Dominating:</h2>
+<h3>Dominating:</h3>
 <ul>
 {% for u,n in oppressing %}
     <li>Killed <a href="u/{{u|url_encode}}"><em>{{ u }}</em></a> <strong>{{ n }}</strong> times in a row</li>
@@ -112,12 +115,13 @@
 
 {% if oppressors|length > 0 %}
 <br /><br />
-<h2>Dominated By:</h2>
+<h3>Dominated By:</h3>
 <ul>
 {% for u,n in oppressors %}
     <li>Killed by <a href="u/{{u|url_encode}}"><em>{{ u }}</em></a> <strong>{{ n }}</strong> times in a row</li>
 {% endfor %}
 </ul>
+{% endif %}
 {% endif %}
 
 <br /><br />
