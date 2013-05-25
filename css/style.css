@@ -750,3 +750,10 @@ table.stats .name {
 table.stats .score {
     font-size: 1.3em;
 }
+table.stats .avatar-tiny {
+    width: 50px;
+}
+table.stats .avatar-tiny img {
+    width: 30px;
+    height: 30px;
+}

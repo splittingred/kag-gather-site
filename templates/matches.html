@@ -7,11 +7,19 @@
 <br />
 
 
-<ul>
+<table class="stats matches">
+<tbody>
 {% for match in matches %}
-    <li><a href="match/{{match.id}}"><em>{{ match.created_at }}</em>: #{{ match.id }} @ {{ match.server_name}}</a></li>
+<tr onclick="location.href='match/{{ match.id }}';">
+    <td>#{{ match.id }}</td>
+    <td style="width: 68%"><a href="match/{{match.id}}"><em>{{ match.created_at }}</em></a></td>
+    <td>{{ match.server_name}}</td>
+</tr>
 {% endfor %}
-</ul>
+</tbody>
+</table>
+
+<br />
 
 {% for page in radius(currentPage,3,totalPages) %}
   <a href="matches.html?page={{ page }}">{{ page }}</a>
