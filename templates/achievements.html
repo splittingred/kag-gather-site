@@ -8,11 +8,17 @@
 <p>You may click on an achievement to view more detailed stats. Collect all {{ total }}!</p>
 <br />
 
-<ol>
+<table class="stats achievements">
+<tbody>
 {% for ach in achievements %}
-    <li><strong><a href="achievement/{{ ach.url }}">{{ ach.name }}</a></strong>: {{ ach.description }} - <em style="font-size: .8em;">{{ ach.winners }} Users</em></li>
+<tr onclick="location.href='achievement/{{ ach.url }}';">
+    <td class="name"><a href="achievement/{{ ach.url }}">{{ ach.name }}</a></td>
+    <td class="description">{{ ach.description }}</td>
+    <td>{{ ach.winners }} Users</td>
+</tr>
 {% endfor %}
-</ol>
+</tbody>
+</table>
 
 <p>&nbsp;</p>
 

@@ -16,33 +16,51 @@
 </div>
 <br />
 
-<div style="float: right; padding: 0 10px;">
+<div style="width: 49%; float: right; padding: 0 2px;">
 <h3>Related <a href="achievements.html">Achievements</a>:</h3>
 
-<ul>
+<table class="stats achievements">
+<tbody>
 {% for ach in related %}
-    <li><a href="achievement/{{ ach.code|url_encode }}"><strong>{{ ach.name }}</strong></a>: {{ ach.description }}</li>
+<tr onclick="location.href='achievement/{{ code|url_encode }}';">
+    <td class="name"><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></td>
+    <td class="description">{{ ach.description }}</td>
+</tr>
 {% endfor %}
-</ul>
+</tbody>
+</table>
 </div>
 
-<div>
+<div style="width: 49%">
 <h3>Won By:</h3>
 
-<ul>
-{% for user in users %}
-    <li><a href="u/{{ user.name }}">{{ user.name }}</a> - {{ user.value }} times</li>
+<table class="stats">
+<tbody>
+{% for u in users %}
+<tr onclick="location.href='u/{{ u.name|url_encode }}';">
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u.name|url_encode}}&s=small" alt="" /></td>
+    <td class="name" style="width: 40%"><a href="u/{{ u.name|url_encode }}">{{ u.name }}</a></td>
+    <td class="score">{{u.value}} times</td>
+</tr>
 {% endfor %}
-</ul>
+</tbody>
+</table>
 
 <br /><br />
 <h3>Users Close to Achievement:</h3>
 
-<ul>
+
+<table class="stats">
+<tbody>
 {% for user,value in users_close %}
-    <li><a href="u/{{ user|url_encode }}">{{ user }}</a> - {{ value }} times</li>
+<tr onclick="location.href='u/{{ user|url_encode }}';">
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{user|url_encode}}&s=small" alt="" /></td>
+    <td class="name" style="width: 40%"><a href="u/{{ user|url_encode }}">{{ user }}</a></td>
+    <td class="score">{{value}} times</td>
+</tr>
 {% endfor %}
-</ul>
+</tbody>
+</table>
 
 </div>
 
