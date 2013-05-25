@@ -13,7 +13,7 @@
 <tbody>
 {% for idx,rank in ranks %}
 {% for u in rank.users %}
-<tr onclick="location.href='u/{{ u.url }}';">
+<tr onclick="location.href='u/{{ u.name|url_encode }}';">
     <td class="rank">#{{idx + 1}}</td>
     <td class="avatar"><img src="{{base_url}}avatar.php?u={{u.name|url_encode}}&s=small" alt="" /></td>
     <td class="name"><a href="u/{{ u.name|url_encode }}">{{u.clan}} {{ u.name }}</a></td>
