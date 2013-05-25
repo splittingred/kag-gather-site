@@ -725,11 +725,15 @@ h3 {
 
 table.stats {
     border-collapse: collapse;
+    width: 98%;
 }
 table.stats tr {
     cursor: pointer;
 }
-table.stats td {
+table.stats th {
+    background-color: #eee;
+}
+table.stats td,table.stats th {
     padding: 5px 10px;
     border-spacing: 4px;
     vertical-align: middle;
@@ -757,4 +761,16 @@ table.stats .avatar-tiny {
 table.stats .avatar-tiny img {
     width: 30px;
     height: 30px;
+}
+table.stats .match-win {
+    font-weight: bold;
+}
+
+table.stats.achievements td {
+    vertical-align: top;
+}
+table.stats.achievements td.name {
+    font-size: 1em;
+    width: 30%;
+    font-weight: bold;
 }

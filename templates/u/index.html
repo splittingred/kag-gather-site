@@ -80,11 +80,16 @@
 <br /><br />
 <h2>Achievements</h2>
 
-<ol>
+<table class="stats achievements">
+<tbody>
 {% for ach in achievements %}
-    <li><strong><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></strong> - {{ ach.description }} </li>
+<tr>
+    <td class="name"><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></td>
+    <td class="description">{{ ach.description }}</td>
+</tr>
 {% endfor %}
-</ol>
+</tbody>
+</table>
 {% endif %}
 
 
@@ -92,11 +97,17 @@
 <br /><br />
 <h3>Close to Achievements:</h3>
 
-<ul>
+<table class="stats achievements">
+<tbody>
 {% for code,ach in achievements_close %}
-    <li><strong><a href="achievement/{{ code|url_encode }}">{{ ach.name }}</a></strong> - {{ ach.description }} - at {{ ach.current }} times</li>
+<tr>
+    <td class="name"><a href="achievement/{{ code|url_encode }}">{{ ach.name }}</a></td>
+    <td class="description">{{ ach.description }}</td>
+    <td>{{ ach.current }} times</td>
+</tr>
 {% endfor %}
-</ul>
+</tbody>
+</table>
 {% endif %}
 
 {% if oppressing|length > 0 or oppressors|length > 0 %}
@@ -106,32 +117,61 @@
 
 {% if oppressing|length > 0 %}
 <h3>Dominating:</h3>
-<ul>
+<table class="stats">
+<tbody>
 {% for u,n in oppressing %}
-    <li>Killed <a href="u/{{u|url_encode}}"><em>{{ u }}</em></a> <strong>{{ n }}</strong> times in a row</li>
+<tr>
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
+    <td><a href="u/{{u|url_encode}}">{{ u }}</a></td>
+    <td><strong>{{ n }}</strong> times in a row</td>
+</tr>
 {% endfor %}
-</ul>
+</tbody>
+</table>
 {% endif %}
 
 {% if oppressors|length > 0 %}
 <br /><br />
 <h3>Dominated By:</h3>
-<ul>
+<table class="stats">
+<tbody>
 {% for u,n in oppressors %}
-    <li>Killed by <a href="u/{{u|url_encode}}"><em>{{ u }}</em></a> <strong>{{ n }}</strong> times in a row</li>
+<tr>
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
+    <td><a href="u/{{u|url_encode}}">{{ u }}</a></td>
+    <td><strong>{{ n }}</strong> times in a row</td>
+</tr>
 {% endfor %}
-</ul>
+</tbody>
+</table>
 {% endif %}
 {% endif %}
 
 <br /><br />
 <h2>Recent Matches:</h2>
 
-<ul>
+<table class="stats">
+<thead>
+<tr>
+    <th>ID</th>
+    <th>Time</th>
+    <th>Class</th>
+    <th>K/D</th>
+    <th>Result</th>
+</tr>
+</thead>
+<tbody>
 {% for match in recent_matches %}
-    <li><a href="match/{{match.id}}"><em>{{ match.created_at }}</em>: #{{ match.id }} - {{match.cls}}, K/D: {{match.kills // 1}}/{{match.deaths // 1}} - <strong>{{ match.won ? "Won" : "Lost"}}</strong></a></li>
+<tr onclick="location.href='match/{{ match.id }}';">
+    <td>#{{ match.id }}</td>
+    <td style="width: 50%"><a href="match/{{match.id}}"><em>{{ match.created_at }}</em></a></td>
+    <td>{{ match.cls}}</td>
+    <td class="kd">{{ match.kills // 1 }}/{{ match.deaths // 1 }}</td>
+    <td class="match-win">{{ match.won ? "Won" : "Lost"}}</td>
+</tr>
 {% endfor %}
-</ul>
+</tbody>
+</table>
 
 </div>
 <br class="clear" />
