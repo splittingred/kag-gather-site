@@ -11,7 +11,7 @@
     <table class="stats" style="width: 100%">
     <tbody>
     {% for player_name,player in players %}
-    <tr>
+    <tr onclick="location.href='u/{{ player_name|url_encode }}';">
         <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{player_name|url_encode}}&s=small" alt="" /></td>
         <td style="width: 50%" class="name"><a href="u/{{player_name}}">{{ player_name }}</a></td>
         <td><em>{{ player.class }}</em></td>

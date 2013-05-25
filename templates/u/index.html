@@ -120,7 +120,7 @@
 <table class="stats">
 <tbody>
 {% for u,n in oppressing %}
-<tr>
+<tr onclick="location.href='u/{{ u|url_encode }}';">
     <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
     <td><a href="u/{{u|url_encode}}">{{ u }}</a></td>
     <td><strong>{{ n }}</strong> times in a row</td>
@@ -136,7 +136,7 @@
 <table class="stats">
 <tbody>
 {% for u,n in oppressors %}
-<tr>
+<tr onclick="location.href='u/{{ u|url_encode }}';">
     <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
     <td><a href="u/{{u|url_encode}}">{{ u }}</a></td>
     <td><strong>{{ n }}</strong> times in a row</td>
