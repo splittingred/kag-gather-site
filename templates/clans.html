@@ -8,9 +8,18 @@
 <p>You may click on a name to view more detailed stats. Click on a specific stat to view rankings for that stat.</p>
 <br />
 
-<ol>
-{% for rank in ranks %}
-    <li><strong>{% for u in rank.clans %}<a href="clan/{{ u.url }}">{{ u.name }}</a>{{ loop.last ? '' : ', ' }}{% endfor %}</strong> - {{ rank.score }}</li>
+<table class="stats rankings">
+<tbody>
+{% for idx,rank in ranks %}
+{% for u in rank.clans %}
+<tr onclick="location.href='clan/{{ u.name|url_encode }}';">
+    <td class="rank">#{{idx + 1}}</td>
+    <td class="name"><a href="clan/{{ u.name|url_encode }}">{{ u.name }}</a></td>
+    <td class="score">{{rank.score}}</td>
+</tr>
 {% endfor %}
-</ol>
+{% endfor %}
+</tbody>
+</table>
+
 </div>
