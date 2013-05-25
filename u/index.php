@@ -50,6 +50,7 @@ if (!empty($placeholders['clan_name'])) {
     $placeholders['clan_url'] = urlencode($placeholders['clan_name']);
 }
 
+
 foreach ($placeholders['recent_matches'] as &$m) {
     $m['created_at'] = strftime('%b %d, %Y at %I:%M %p',strtotime($m['created_at']));
 }

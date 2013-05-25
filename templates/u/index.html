@@ -76,6 +76,7 @@
 <li><a href="stat/deaths.cyanide">Committed Suicide</a>: {{ stats.deaths_cyanide // 1 }}{% if stats.deaths_cyanide > 0 %}<em> - Rank #{{ ranks.deaths_cyanide // 1 }}</em>{% endif %}
 </ul>
 
+{% if achievements|length > 0 %}
 <br /><br />
 <h2>Achievements</h2>
 
@@ -84,8 +85,10 @@
     <li><strong><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></strong> - {{ ach.description }} </li>
 {% endfor %}
 </ol>
+{% endif %}
 
 
+{% if achievements_close|length > 0 %}
 <br /><br />
 <h3>Close to Achievements:</h3>
 
@@ -94,15 +97,35 @@
     <li><strong><a href="achievement/{{ code|url_encode }}">{{ ach.name }}</a></strong> - {{ ach.description }} - at {{ ach.current }} times</li>
 {% endfor %}
 </ul>
+{% endif %}
 
 
+{% if oppressing|length > 0 %}
+<br /><br />
+<h2>Dominating:</h2>
+<ul>
+{% for u,n in oppressing %}
+    <li>Killed <a href="u/{{u|url_encode}}"><em>{{ u }}</em></a> <strong>{{ n }}</strong> times in a row</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if oppressors|length > 0 %}
+<br /><br />
+<h2>Dominated By:</h2>
+<ul>
+{% for u,n in oppressors %}
+    <li>Killed by <a href="u/{{u|url_encode}}"><em>{{ u }}</em></a> <strong>{{ n }}</strong> times in a row</li>
+{% endfor %}
+</ul>
+{% endif %}
 
 <br /><br />
-<h3>Recent Matches:</h3>
+<h2>Recent Matches:</h2>
 
 <ul>
 {% for match in recent_matches %}
-    <li><a href="match/{{match.id}}"><em>{{ match.created_at }}</em>: #{{ match.id }} - {{match.cls}}, {{match.kills // 1}}/{{match.deaths // 1}} - {{ match.won ? "Won" : "Lost"}}</a></li>
+    <li><a href="match/{{match.id}}"><em>{{ match.created_at }}</em>: #{{ match.id }} - {{match.cls}}, K/D: {{match.kills // 1}}/{{match.deaths // 1}} - <strong>{{ match.won ? "Won" : "Lost"}}</strong></a></li>
 {% endfor %}
 </ul>
 
