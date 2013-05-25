@@ -83,7 +83,7 @@
 <table class="stats achievements">
 <tbody>
 {% for ach in achievements %}
-<tr onclick="location.href='achievement/{{ code|url_encode }}';">
+<tr onclick="location.href='achievement/{{ ach.code|url_encode }}';">
     <td class="name"><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></td>
     <td class="description">{{ ach.description }}</td>
 </tr>
