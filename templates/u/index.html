@@ -1,6 +1,6 @@
 <div class="page">
 <div class="inside-left">
-<img src="{{ avatar.medium }}" alt="" />
+<img src="{{ base_url }}avatar.php?u={{kag_user}}" alt="" />
 <h2>{% if clan_name %}<a href="clan/{{ clan_url }}">{{ clan_name}}</a> {% endif %}{{ kag_user }}</h2>
 <h3>Rank: #{{ rank }} - Score: {{ score }}</h3>
 <p>{{ stats.matches // 1 }} matches played</p>

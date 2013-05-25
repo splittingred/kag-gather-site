@@ -720,3 +720,29 @@ h3 {
 .ach-trajectory .current {
     font-weight: bold;
 }
+
+
+table.stats {
+    border-collapse: collapse;
+}
+table.stats tr {
+
+}
+table.stats td {
+    padding: 10px;
+    border-spacing: 4px;
+    vertical-align: middle;
+    /*border: 1px solid red;*/
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+table.stats .rank {
+    font-size: 1.5em;
+}
+table.stats .name {
+    font-size: 1.2em;
+    width: 75%;
+}
+table.stats .score {
+    font-size: 1.3em;
+}
