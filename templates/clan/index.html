@@ -11,11 +11,24 @@
 
 <h2 style="font-size: 17px; border-bottom: 1px solid #ccc;">Members</h2>
 
-<ol>
-{% for user in user_list %}
-    <li><strong><a href="u/{{ user.url }}">{{ user.name }}</a></strong> - {{ user.score }}</li>
+<table class="stats">
+<thead>
+<tr>
+    <th></th>
+    <th>Name</th>
+    <th>Score</th>
+</tr>
+</thead>
+<tbody>
+{% for u in user_list %}
+<tr onclick="location.href='u/{{ u.name|url_encode }}';">
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u.name|url_encode}}&s=small" alt="" /></td>
+    <td class="name"><a href="u/{{ u.name|url_encode }}">{{ u.name }}</a></td>
+    <td class="score">{{u.score}}</td>
+</tr>
 {% endfor %}
-</ol>
+</tbody>
+</table>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>

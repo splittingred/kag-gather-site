@@ -732,6 +732,7 @@ table.stats tr {
 }
 table.stats th {
     background-color: #eee;
+    text-align: left;
 }
 table.stats td,table.stats th {
     padding: 5px 10px;
