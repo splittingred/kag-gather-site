@@ -41,7 +41,7 @@ $recentResult = $stats->get('achievement/recent',array(
 ));
 if (array_key_exists('results',$recentResult)) {
     foreach ($recentResult['results'] as $ach) {
-        $ach['created_at'] = strftime('%b %e, %Y at %I:%S %p',strtotime($ach['created_at']));
+        $ach['created_at'] = strftime('%b %e %I:%S %p',strtotime($ach['created_at']));
         $recent[] = $ach;
     }
 }

@@ -34,16 +34,27 @@ Page:
 
 <br />
 
-<ol class="recent-achievements">
+<table class="stats recent-achievements">
+<tbody>
 {% for ach in recent %}
+<tr onclick="location.href='u/{{ ach.kag_user|url_encode }}';">
+    <td class="created_at">{{ach.created_at}}</td>
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{ach.kag_user|url_encode}}&s=small" alt="" /></td>
+    <td class=""><a href="u/{{ ach.kag_user|url_encode }}">{{ ach.kag_user }}</a></td>
+    <td class=""><strong><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></strong></td>
+    <td>{{ach.description}}</td>
+</tr>
+<!--
     <li>
         <span class="created_at">{{ ach.created_at }}:</span>
         <strong><a href="u/{{ ach.kag_user|url_encode }}">{{ ach.kag_user }}</a></strong>
          earned <strong><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></strong>
          <em>({{ ach.description }})</em>
     </li>
+    -->
 {% endfor %}
-</ol>
+</tbody>
+</table>
 
 
 
