@@ -11,4 +11,5 @@ $response = $stats->get('queue',array(),false);
 $site->render('queue.html',array(
     'queue' => $response['object'],
     'players' => $response['object']['players'],
+    'matches' => $response['object']['matches'],
 ));
