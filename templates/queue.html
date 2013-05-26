@@ -6,7 +6,7 @@
 
 <table class="stats queue">
 <tbody>
-{% for u in players %}
+{% for idx,u in players %}
 <tr onclick="location.href='u/{{ u|url_encode }}';">
     <td class="rank">#{{idx + 1}}</td>
     <td class="avatar"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
