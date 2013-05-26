@@ -44,14 +44,6 @@ Page:
     <td class=""><strong><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></strong></td>
     <td>{{ach.description}}</td>
 </tr>
-<!--
-    <li>
-        <span class="created_at">{{ ach.created_at }}:</span>
-        <strong><a href="u/{{ ach.kag_user|url_encode }}">{{ ach.kag_user }}</a></strong>
-         earned <strong><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></strong>
-         <em>({{ ach.description }})</em>
-    </li>
-    -->
 {% endfor %}
 </tbody>
 </table>
@@ -65,11 +57,18 @@ Page:
 <p>This is a list of the top 25 people who have collected the most achievements.</p>
 <br />
 
-<ol>
-{% for ach in achievers %}
-    <li><strong><a href="u/{{ ach.kag_user|url_encode }}">{{ ach.kag_user }}</a></strong>: {{ ach.achievements }}</li>
+<table class="stats achievers">
+<tbody>
+{% for idx,ach in achievers %}
+<tr onclick="location.href='u/{{ ach.kag_user|url_encode }}';">
+    <td class="rank">#{{idx + 1}}</td>
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{ach.kag_user|url_encode}}&s=small" alt="" /></td>
+    <td class="name"><a href="u/{{ ach.kag_user|url_encode }}">{{ ach.kag_user }}</a></td>
+    <td class="score">{{ ach.achievements }}</td>
+</tr>
 {% endfor %}
-</ol>
+</tbody>
+</table>
 
 
 </div>
