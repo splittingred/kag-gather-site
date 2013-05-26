@@ -1,0 +1,19 @@
+
+<div class="page">
+<center><h2>Gather Queue</h2></center>
+<br />
+<p>This is the current gather queue, where people are awaiting a match.</p>
+
+<table class="stats queue">
+<tbody>
+{% for u in players %}
+<tr onclick="location.href='u/{{ u|url_encode }}';">
+    <td class="rank">#{{idx + 1}}</td>
+    <td class="avatar"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
+    <td class="name"><a href="u/{{ u|url_encode }}">{{u}}</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+</div>
