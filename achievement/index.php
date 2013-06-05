@@ -17,8 +17,8 @@ if (empty($data) || empty($data['object'])) {
 }
 
 $placeholders = array_merge(array(),$data['object']);
-foreach ($placeholders['users'] as &$user) {
-    $user['value'] = number_format($user['value']);
+foreach ($placeholders['users']['results'] as $user => &$value) {
+    $value = number_format($value);
 }
 $site = new Site();
 $site->render('achievement/index.html',$placeholders);

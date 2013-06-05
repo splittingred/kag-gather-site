@@ -6,11 +6,17 @@
 
 <br />
 
-<ol>
+<table class="stats">
+<tbody>
 {% for user in results %}
-    <li><a href="u/{{ user.user }}">{{ user.user }}</a> - {{ user.times|number_format }}</li>
+<tr onclick="location.href='u/{{ user.user|url_encode }}';">
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{user.user|url_encode}}&s=small" alt="" /></td>
+    <td class="name" style="width: 40%"><a href="u/{{ user.user|url_encode }}">{{ user.user }}</a></td>
+    <td class="score">{{user.times|number_format}} times</td>
+</tr>
 {% endfor %}
-</ol>
+</tbody>
+</table>
 
 <br class="clear" />
 </div>

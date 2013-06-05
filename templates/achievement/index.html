@@ -32,15 +32,15 @@
 </div>
 
 <div style="width: 49%">
-<h3>Won By:</h3>
+<h3>Won By ({{users.total}}):</h3>
 
 <table class="stats">
 <tbody>
-{% for u in users %}
-<tr onclick="location.href='u/{{ u.name|url_encode }}';">
-    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u.name|url_encode}}&s=small" alt="" /></td>
-    <td class="name" style="width: 40%"><a href="u/{{ u.name|url_encode }}">{{ u.name }}</a></td>
-    <td class="score">{{u.value}} times</td>
+{% for u,v in users.results %}
+<tr onclick="location.href='u/{{ u|url_encode }}';">
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
+    <td class="name" style="width: 40%"><a href="u/{{ u|url_encode }}">{{ u }}</a></td>
+    <td class="score">{{v}} times</td>
 </tr>
 {% endfor %}
 </tbody>
