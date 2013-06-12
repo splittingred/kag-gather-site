@@ -11,7 +11,7 @@
 </tr>
 </thead>
 <tbody>
-{% for match in recent_matches %}
+{% for match in matches %}
 <tr onclick="">
     <td>#{{ match.id }}</td>
     <td style="width: 50%"><a href="match/{{match.id}}"><em>{{ match.created_at }}</em></a></td>
