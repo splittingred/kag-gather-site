@@ -14,7 +14,7 @@
 <tr onclick="location.href='achievement/{{ ach.url }}';">
     <td class="name"><a href="achievement/{{ ach.url }}">{{ ach.name }}</a></td>
     <td class="description">{{ ach.description }}</td>
-    <td>{{ ach.winners }} Users</td>
+    <td>{{ ach.users // 1 }} Users</td>
 </tr>
 {% endfor %}
 </tbody>
