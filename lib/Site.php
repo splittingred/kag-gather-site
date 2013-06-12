@@ -20,7 +20,7 @@ class Site {
         $this->twig->addExtension(new RadiusExtension());
     }
 
-    public function render($page,array $values = array()) {
+    public function render($page,array $values = array(),array $options = array()) {
         $isSsl = ((isset ($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') || $_SERVER['SERVER_PORT'] == 443);
         $urlScheme=  $isSsl ? 'https://' : 'http://';
         $host = $_SERVER['HTTP_HOST'];
@@ -32,10 +32,13 @@ class Site {
         $values['site_url'] = $full;
         $values['top_url'] = $urlScheme.$host;
         $values['base_href'] = $base;
+        $values['base_url'] = rtrim($values['top_url'],'/').'/';
+        $values['full_url'] = rtrim($values['base_url'],'/').$_SERVER['PHP_SELF'];
 
-        echo $this->twig->render('_header.html',$values);
+
+        if (empty($options['skip_header'])) echo $this->twig->render('_header.html',$values);
         echo $this->twig->render($page,$values);
-        echo $this->twig->render('_footer.html',$values);
+        if (empty($options['skip_header'])) echo $this->twig->render('_footer.html',$values);
     }
 }
 

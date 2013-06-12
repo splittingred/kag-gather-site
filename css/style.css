@@ -775,3 +775,10 @@ table.stats.achievements td.name {
     width: 30%;
     font-weight: bold;
 }
+
+ul.ui-tabs-nav li {
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -5,16 +5,16 @@ require dirname(__FILE__).'/Config.php';
  * Rest client for getting stats
  */
 class Stats {
-    protected $host = 'http://stats.gather.kag2d.nl/';
-    #protected $host = 'http://localhost/';
-    protected $port = 50313;
-    #protected $port = 1234;
+    protected $host;
+    protected $port;
     /** @var Cacher $cache */
     protected $cache;
+    protected $cacheEnabled = true;
 
     public function __construct() {
-        $this->host = Config::get('stats.url','http://stats.gather.kag2d.nl/');
+        $this->host = Config::get('stats.url','http://stats.gather.splittingred.com/');
         $this->port = intval(Config::get('stats.port',50313));
+        $this->cacheEnabled = Config::get('cache',true);
         $this->getCache();
     }
 
@@ -26,7 +26,7 @@ class Stats {
         error_reporting(E_ALL); ini_set('display_errors',true);
         $ch = curl_init();
         $cacheKey = $path.'.'.md5(serialize($params));
-        if ($cache && $this->getCache()) {
+        if ($this->cacheEnabled && $cache && $this->getCache()) {
             $cached = $this->cache->get($cacheKey);
             if (!empty($cached)) {
                 return $cached;
@@ -61,7 +61,7 @@ class Stats {
             $output = curl_errno($ch).': '.curl_error($ch).' - from '.$url.' port '.$this->port.': '.$output;
         } else {
             $output = json_decode($output,true);
-            if (!empty($output) && $cache && $this->getCache()) {
+            if (!empty($output) && $this->cacheEnabled && $cache && $this->getCache()) {
                 $this->cache->set($cacheKey,$output,300);
             }
         }
