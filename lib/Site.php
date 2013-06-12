@@ -38,7 +38,7 @@ class Site {
 
         if (empty($options['skip_header'])) echo $this->twig->render('_header.html',$values);
         echo $this->twig->render($page,$values);
-        if (empty($options['skip_header'])) echo $this->twig->render('_footer.html',$values);
+        if (empty($options['skip_footer'])) echo $this->twig->render('_footer.html',$values);
     }
 }
 

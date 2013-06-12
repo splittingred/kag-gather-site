@@ -4,7 +4,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
 RewriteRule ^(config/) - [F,L,NC]
-RewriteRule ^u/(.+)$ u/index.php?u=$1 [L,QSA]
+RewriteRule ^u/(.*)$ u/index.php?u=$1 [L,QSA]
 RewriteRule ^clan/(.+)$ clan/index.php?c=$1 [L,QSA]
 RewriteRule ^stat/(.+)$ stat/index.php?s=$1 [L,QSA]
 RewriteRule ^cstat/(.+)$ cstat/index.php?s=$1 [L,QSA]

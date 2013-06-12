@@ -12,175 +12,19 @@
 <div class="inside-content user">
     <div id="tabz" class="tabs">
         <ul>
-            <li><a href="#tab-stats">Stats</a></li>
-            <li><a href="#tab-achievements">Achievements</a></li>
-            <li><a href="#tab-enemies">Enemies</a></li>
-            <li><a href="#tab-recent-matches">Recent Matches</a></li>
+            <li><a id="tabl-stats" href="user/stats.php?u={{kag_user}}">Stats</a></li>
+            <li><a id="tabl-achievements" href="user/achievements.php?u={{kag_user}}">Achievements</a></li>
+            <li><a id="tabl-enemies" href="user/enemies.php?u={{kag_user}}">Enemies</a></li>
+            <li><a id="tabl-recent-matches" href="user/matches.php?u={{kag_user}}">Recent Matches</a></li>
         </ul>
 
         <div id="tab-stats">
-            <h2>Stats</h2>
-
-            <ul>
-            <!--<li>Matches Played: {{ stats.matches // 1 }}-->
-            <li><a href="stat/substitutions">Played as a Sub</a>: {{ stats.substitutions + stats.substituted }}{% if stats.substitutions > 0 %}<em> - Rank #{{ ranks.substitutions }}</em>{% endif %}
-            <li><a href="stat/desertions">Deserted a Match</a>: {{ stats.desertions // 1 }}{% if stats.desertions > 0 %}<em> - Rank #{{ ranks.desertions }}</em>{% endif %}
-            </ul>
-
-            <h3>Knight</h3>
-
-            <ul>
-            <li><a href="stat/knight.kills">Kills</a>: {{ stats.knight_kills // 1}}{% if stats.knight_kills > 0 %}<em> - Rank #{{ ranks.knight_kills // 1 }}</em>{% endif %}
-            <li><a href="stat/knight.deaths">Deaths</a>: {{ stats.knight_deaths // 1 }}{% if stats.knight_deaths > 0 %}<em> - Rank #{{ ranks.knight_deaths // 1 }}</em>{% endif %}
-            <li><a href="stat/knight.matches">Matches</a>: {{ stats.knight_matches // 1 }}{% if stats.knight_matches > 0 %}<em> - Rank #{{ ranks.knight_matches // 1 }}</em>{% endif %}
-            <li><a href="stat/knight.wins">Wins</a>: {{ stats.knight_wins // 1 }}{% if stats.knight_wins > 0 %}<em> - Rank #{{ ranks.knight_wins // 1 }}</em>{% endif %}
-            <li><a href="stat/knight.losses">Losses</a>: {{ stats.knight_losses // 1 }}{% if stats.knight_losses > 0 %}<em> - Rank #{{ ranks.knight_losses // 1 }}</em>{% endif %}
-            </ul>
-
-            <h3>Builder</h3>
-
-            <ul>
-            <li><a href="stat/builder.kills">Kills</a>: {{ stats.builder_kills // 1 }}{% if stats.builder_kills > 0 %}<em> - Rank #{{ ranks.builder_kills // 1 }}</em>{% endif %}
-            <li><a href="stat/builder.deaths">Deaths</a>: {{ stats.builder_deaths // 1 }}{% if stats.builder_deaths > 0 %}<em> - Rank #{{ ranks.builder_deaths // 1 }}</em>{% endif %}
-            <li><a href="stat/builder.matches">Matches</a>: {{ stats.builder_matches // 1 }}{% if stats.builder_matches > 0 %}<em> - Rank #{{ ranks.builder_matches // 1 }}</em>{% endif %}
-            <li><a href="stat/builder.wins">Wins</a>: {{ stats.builder_wins // 1 }}{% if stats.builder_wins > 0 %}<em> - Rank #{{ ranks.builder_wins // 1 }}</em>{% endif %}
-            <li><a href="stat/builder.losses">Losses</a>: {{ stats.builder_losses // 1 }}{% if stats.builder_losses > 0 %}<em> - Rank #{{ ranks.builder_losses // 1 }}</em>{% endif %}
-            </ul>
-
-            <h3>Archer</h3>
-
-            <ul>
-            <li><a href="stat/archer.kills">Kills</a>: {{ stats.archer_kills // 1 }}{% if stats.archer_kills > 0 %}<em> - Rank #{{ ranks.archer_kills // 1 }}</em>{% endif %}
-            <li><a href="stat/archer.deaths">Deaths</a>: {{ stats.archer_deaths // 1 }}{% if stats.archer_deaths > 0 %}<em> - Rank #{{ ranks.archer_deaths // 1 }}</em>{% endif %}
-            <li><a href="stat/archer.matches">Matches</a>: {{ stats.archer_matches // 1 }}{% if stats.archer_matches > 0 %}<em> - Rank #{{ ranks.archer_matches // 1 }}</em>{% endif %}
-            <li><a href="stat/archer.wins">Wins</a>: {{ stats.archer_wins // 1 }}{% if stats.archer_wins > 0 %}<em> - Rank #{{ ranks.archer_wins // 1 }}</em>{% endif %}
-            <li><a href="stat/archer.losses">Losses</a>: {{ stats.archer_losses // 1 }}{% if stats.archer_losses > 0 %}<em> - Rank #{{ ranks.archer_losses // 1 }}</em>{% endif %}
-            </ul>
-
-            <h3>Kill Types</h3>
-
-            <ul>
-            <li><a href="stat/kills.gibbed">Killed with Bombs</a>: {{ stats.kills_gibbed // 1 }}{% if stats.kills_gibbed > 0 %}<em> - Rank #{{ ranks.kills_gibbed // 1 }}</em>{% endif %}
-            <li><a href="stat/kills.hammered">Killed with Hammer</a>: {{ stats.kills_hammered // 1 }}{% if stats.kills_hammered > 0 %}<em> - Rank #{{ ranks.kills_hammered // 1 }}</em>{% endif %}
-            <li><a href="stat/kills.assisted">Killed with Catapult</a>: {{ stats.kills_assisted + stats.kills_died }}{% if stats.kills_assisted > 0 %}<em> - Rank #{{ ranks.kills_assisted // 1 }}</em>{% endif %}
-            <li><a href="stat/kills.shot">Shot with an Arrow</a>: {{ stats.kills_shot // 1 }}{% if stats.kills_shot > 0 %}<em> - Rank #{{ ranks.kills_shot // 1 }}</em>{% endif %}
-            <li><a href="stat/kills.slew">Slew with their Sword</a>: {{ stats.kills_slew // 1 }}{% if stats.kills_slew > 0 %}<em> - Rank #{{ ranks.kills_slew // 1 }}</em>{% endif %}
-            <li><a href="stat/kills.squashed">Stomped Someone to Death</a>: {{ stats.kills_squashed // 1 }}{% if stats.kills_squashed > 0 %}<em> - Rank #{{ ranks.kills_squashed // 1 }}</em>{% endif %}
-            <li><a href="stat/kills.pushed">Pushed Someone off a Ledge</a>: {{ stats.kills_pushed // 1 }}{% if stats.kills_pushed > 0 %}<em> - Rank #{{ ranks.kills_pushed // 1 }}</em>{% endif %}
-            <li><a href="stat/kills.fell">Pushed Someone to their Death</a>: {{ stats.kills_fell // 1 }}{% if stats.kills_fell > 0 %}<em> - Rank #{{ ranks.kills_fell // 1 }}</em>{% endif %}
-            </ul>
-
-            <h3>Death Types</h3>
-
-            <ul>
-            <li><a href="stat/deaths.assisted">Crushed Under Falling Rocks</a>: {{ stats.deaths_assisted + stats.deaths_died }}{% if stats.deaths_assisted > 0 %}<em> - Rank #{{ ranks.deaths_assisted // 1 }}</em>{% endif %}
-            <li><a href="stat/deaths.gibbed">Died by a Bomb</a>: {{ stats.deaths_gibbed // 1 }}{% if stats.deaths_gibbed > 0 %}<em> - Rank #{{ ranks.deaths_gibbed // 1 }}</em>{% endif %}
-            <li><a href="stat/deaths.hammered">Hammered</a>: {{ stats.deaths_hammered // 1 }}{% if stats.deaths_hammered > 0 %}<em> - Rank #{{ ranks.deaths_hammered // 1 }}</em>{% endif %}
-            <li><a href="stat/deaths.shot">Shot by an Archer</a>: {{ stats.deaths_shot // 1 }}{% if stats.deaths_shot > 0 %}<em> - Rank #{{ ranks.deaths_shot // 1 }}</em>{% endif %}
-            <li><a href="stat/deaths.slew">Slain by a Knight</a>: {{ stats.deaths_slew // 1 }}{% if stats.deaths_slew > 0 %}<em> - Rank #{{ ranks.deaths_slew // 1 }}</em>{% endif %}
-            <li><a href="stat/deaths.squashed">Stomped to Death</a>: {{ stats.deaths_squashed // 1 }}{% if stats.deaths_squashed > 0 %}<em> - Rank #{{ ranks.deaths_squashed // 1 }}</em>{% endif %}
-            <li><a href="stat/deaths.pushed">Pushed off a Ledge</a>: {{ stats.deaths_pushed // 1 }}{% if stats.deaths_pushed > 0 %}<em> - Rank #{{ ranks.deaths_pushed // 1 }}</em>{% endif %}
-            <li><a href="stat/deaths.fell">Fell to Their Death</a>: {{ stats.deaths_fell // 1 }}{% if stats.deaths_fell > 0 %}<em> - Rank #{{ ranks.deaths_fell // 1 }}</em>{% endif %}
-            <li><a href="stat/deaths.cyanide">Committed Suicide</a>: {{ stats.deaths_cyanide // 1 }}{% if stats.deaths_cyanide > 0 %}<em> - Rank #{{ ranks.deaths_cyanide // 1 }}</em>{% endif %}
-            </ul>
         </div>
 
-        <div id="tab-achievements">
-            <h2>Achievements</h2>
-            {% if achievements|length > 0 %}
-
-            <table class="stats achievements">
-            <tbody>
-            {% for ach in achievements %}
-            <tr onclick="location.href='achievement/{{ ach.code|url_encode }}';">
-                <td class="name"><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></td>
-                <td class="description">{{ ach.description }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-            </table>
-            {% endif %}
-
-            {% if achievements_close|length > 0 %}
-            <h3>Close to Achievements:</h3>
-
-            <table class="stats achievements">
-            <tbody>
-            {% for code,ach in achievements_close %}
-            <tr onclick="location.href='achievement/{{ code|url_encode }}';">
-                <td class="name"><a href="achievement/{{ code|url_encode }}">{{ ach.name }}</a></td>
-                <td class="description">{{ ach.description }}</td>
-                <td>{{ ach.current }} times</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-            </table>
-            {% endif %}
-        </div>
+        <div id="tab-achievements"></div>
 
         <div id="tab-enemies">
-            {% if oppressing|length > 0 or oppressors|length > 0 %}
-            <h2>Enemies</h2>
-            <p>These lists show your enemies; either those you are dominating by killing more than 5 times in a row without being killed by them, or vice versa.</p>
 
-            {% if oppressing|length > 0 %}
-            <h3>Dominating:</h3>
-            <table class="stats">
-            <tbody>
-            {% for u,n in oppressing %}
-            <tr onclick="location.href='u/{{ u|url_encode }}';">
-                <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
-                <td><a href="u/{{u|url_encode}}">{{ u }}</a></td>
-                <td><strong>{{ n }}</strong> times in a row</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-            </table>
-            {% endif %}
-
-            {% if oppressors|length > 0 %}
-            <br /><br />
-            <h3>Dominated By:</h3>
-            <table class="stats">
-            <tbody>
-            {% for u,n in oppressors %}
-            <tr onclick="location.href='u/{{ u|url_encode }}';">
-                <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
-                <td><a href="u/{{u|url_encode}}">{{ u }}</a></td>
-                <td><strong>{{ n }}</strong> times in a row</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-            </table>
-            {% endif %}
-            {% endif %}
-        </div>
-
-        <div id="tab-recent-matches">
-            <h2>Recent Matches</h2>
-
-            <table class="stats">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Time</th>
-                <th>Class</th>
-                <th>K/D</th>
-                <th>Result</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for match in recent_matches %}
-            <tr onclick="location.href='match/{{ match.id }}';">
-                <td>#{{ match.id }}</td>
-                <td style="width: 50%"><a href="match/{{match.id}}"><em>{{ match.created_at }}</em></a></td>
-                <td>{{ match.cls}}</td>
-                <td class="kd">{{ match.kills // 1 }}/{{ match.deaths // 1 }}</td>
-                <td class="match-win">{{ match.won ? "Won" : "Lost"}}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-            </table>
         </div>
     </div>
 </div>

@@ -1,0 +1,35 @@
+{% if oppressing|length > 0 or oppressors|length > 0 %}
+<h2>Enemies</h2>
+<p>These lists show your enemies; either those you are dominating by killing more than 5 times in a row without being killed by them, or vice versa.</p>
+
+{% if oppressing|length > 0 %}
+<h3>Dominating:</h3>
+<table class="stats">
+<tbody>
+{% for u,n in oppressing %}
+<tr onclick="location.href='u/{{ u|url_encode }}';">
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
+    <td><a href="u/{{u|url_encode}}">{{ u }}</a></td>
+    <td><strong>{{ n }}</strong> times in a row</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+
+{% if oppressors|length > 0 %}
+<br /><br />
+<h3>Dominated By:</h3>
+<table class="stats">
+<tbody>
+{% for u,n in oppressors %}
+<tr onclick="location.href='u/{{ u|url_encode }}';">
+    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
+    <td><a href="u/{{u|url_encode}}">{{ u }}</a></td>
+    <td><strong>{{ n }}</strong> times in a row</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+{% endif %}

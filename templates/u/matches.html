@@ -1,0 +1,26 @@
+<h2>Recent Matches</h2>
+
+<table class="stats">
+<thead>
+<tr>
+    <th>ID</th>
+    <th>Time</th>
+    <th>Class</th>
+    <th>K/D</th>
+    <th>Result</th>
+</tr>
+</thead>
+<tbody>
+{% for match in recent_matches %}
+<tr onclick="">
+    <td>#{{ match.id }}</td>
+    <td style="width: 50%"><a href="match/{{match.id}}"><em>{{ match.created_at }}</em></a></td>
+    <td>{{ match.cls}}</td>
+    <td class="kd">{{ match.kills // 1 }}/{{ match.deaths // 1 }}</td>
+    <td class="match-win">{{ match.won ? "Won" : "Lost"}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<!--<a href="faq.php" class="tabLink" data-tab="" onclick="try { $('#ui-tabs-4').load(''); } catch (e) { console.log(e); } return false;">FAQ</a>-->

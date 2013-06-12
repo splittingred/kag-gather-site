@@ -1,0 +1,30 @@
+<h2>Achievements</h2>
+{% if achievements|length > 0 %}
+
+<table class="stats achievements">
+<tbody>
+{% for ach in achievements %}
+<tr onclick="location.href='achievement/{{ ach.code|url_encode }}';">
+    <td class="name"><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></td>
+    <td class="description">{{ ach.description }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+
+{% if achievements_close|length > 0 %}
+<h3>Close to Achievements:</h3>
+
+<table class="stats achievements">
+<tbody>
+{% for code,ach in achievements_close %}
+<tr onclick="location.href='achievement/{{ code|url_encode }}';">
+    <td class="name"><a href="achievement/{{ code|url_encode }}">{{ ach.name }}</a></td>
+    <td class="description">{{ ach.description }}</td>
+    <td>{{ ach.current }} times</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}

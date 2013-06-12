@@ -1,8 +1,8 @@
 <?php
-require_once dirname(dirname(__FILE__)).'/lib/Stats.php';
-require_once dirname(dirname(__FILE__)).'/lib/Cache.php';
-require_once dirname(dirname(__FILE__)).'/lib/Translator.php';
-require_once dirname(dirname(__FILE__)).'/lib/Site.php';
+require_once dirname(dirname(__FILE__)) . '/lib/Stats.php';
+require_once dirname(dirname(__FILE__)) . '/lib/Cache.php';
+require_once dirname(dirname(__FILE__)) . '/lib/Translator.php';
+require_once dirname(dirname(__FILE__)) . '/lib/Site.php';
 
 if (empty($_REQUEST['u'])) {
     header('Location: http://gather.kag2d.nl/'); exit();
@@ -17,18 +17,7 @@ if (empty($data) || empty($data['object'])) {
 }
 $user = $data['object'];
 $user['created_at'] = strftime('%b %d, %Y',strtotime($user['created_at']));
-$avatar = $cache->get($user['kag_user'].'.avatar');
-if (empty($avatar)) {
-    $a = @file_get_contents('https://api.kag2d.com/player/'.$user['kag_user'].'/avatar');
-    if (!empty($a)) {
-        $avatar = json_decode($a,true);
-        if (!empty($avatar)) {
-            $cache->set('avatar/'.$user['kag_user'].'.avatar',$avatar,3600);
-        }
-    }
-}
 $placeholders = array_merge(array(),$user);
-$placeholders['avatar'] = $avatar;
 
 ksort($user['stats']);
 $s = '';
@@ -50,5 +39,9 @@ if (!empty($placeholders['clan_name'])) {
     $placeholders['clan_url'] = urlencode($placeholders['clan_name']);
 }
 
+
 $site = new Site();
-$site->render('u/index.html',$placeholders);
+$site->render('u/achievements.html',$placeholders,array(
+    'skip_header' => true,
+    'skip_footer' => true,
+));
