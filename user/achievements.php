@@ -18,6 +18,7 @@ if (empty($data) || empty($data['results'])) {
 $placeholders = array(
     'achievements' => $data['results'],
     'total' => $data['total'],
+    'all_total' => $data['all_total'],
 );
 
 $site = new Site();
