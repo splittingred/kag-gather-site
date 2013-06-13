@@ -10,7 +10,7 @@
 <table class="stats matches">
 <tbody>
 {% for match in matches %}
-<tr onclick="try { $.colorbox({href:'match/{{match.id}}'}); }catch (e) { console.log(e); } return false;">
+<tr onclick="try { $.colorbox({href:'match/{{match.id}}?m=1'}); }catch (e) { console.log(e); } return false;">
     <td>#{{ match.id }}</td>
     <td style="width: 68%"><a><em>{{ match.created_at }}</em></a></td>
     <td>{{ match.server_name}}</td>

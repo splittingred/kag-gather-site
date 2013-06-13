@@ -32,6 +32,6 @@ $placeholders['stats']['winner'] = mostFrequent($ws);
 
 $site = new Site();
 $site->render('match/index.html',$placeholders,array(
-    'skip_header' => true,
-    'skip_footer' => true,
+    'skip_header' => !empty($_REQUEST['m']),
+    'skip_footer' => !empty($_REQUEST['m']),
 ));
