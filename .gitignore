@@ -2,6 +2,7 @@ cache/
 config.json
 error_dump.log
 cutenews/cdata/
+nohup.out
 
 .settings
 .idea
