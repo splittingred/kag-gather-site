@@ -2,6 +2,12 @@
 
 <p>Played in {{total}} of {{all_total}} Gather matches. Currently only most recent 20 matches are shown.</p><br />
 
+Page:
+{% for page in radius(currentPage,3,totalPages) %}
+  <a onclick="try { $('#ui-tabs-4').load('{{base_url}}user/matches.php?u={{username}}&page={{ page }}');} catch (e) { console.log(e); } return false;">{{ page }}</a>
+  {{ loop.last ? '' : ' | ' }}
+{% endfor %}
+
 <table class="stats">
 <thead>
 <tr>
@@ -25,4 +31,8 @@
 </tbody>
 </table>
 
-<!--<a href="faq.php" class="tabLink" data-tab="" onclick="try { $('#ui-tabs-4').load(''); } catch (e) { console.log(e); } return false;">FAQ</a>-->
+Page:
+{% for page in radius(currentPage,3,totalPages) %}
+  <a onclick="try { $('#ui-tabs-4').load('{{base_url}}user/matches.php?u={{username}}&page={{ page }}');} catch (e) { console.log(e); } return false;">{{ page }}</a>
+  {{ loop.last ? '' : ' | ' }}
+{% endfor %}
