@@ -1,6 +1,7 @@
 cache/
 config.json
 error_dump.log
+cutenews/cdata/
 
 .settings
 .idea
