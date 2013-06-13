@@ -20,9 +20,9 @@ Page:
 </thead>
 <tbody>
 {% for match in matches %}
-<tr onclick="location.href='match/{{ match.id }}';">
+<tr onclick="try { $.colorbox({href:'match/{{match.id}}'}); }catch (e) { console.log(e); } return false;">
     <td>#{{ match.id }}</td>
-    <td style="width: 50%"><a href="match/{{match.id}}"><em>{{ match.created_at }}</em></a></td>
+    <td style="width: 50%"><a><em>{{ match.created_at }}</em></a></td>
     <td>{{ match.cls}}</td>
     <td class="kd">{{ match.kills // 1 }}/{{ match.deaths // 1 }}</td>
     <td class="match-win">{{ match.won ? "Won" : "Lost"}}</td>

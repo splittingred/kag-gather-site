@@ -10,9 +10,9 @@
 <table class="stats matches">
 <tbody>
 {% for match in matches %}
-<tr onclick="location.href='match/{{ match.id }}';">
+<tr onclick="try { $.colorbox({href:'match/{{match.id}}'}); }catch (e) { console.log(e); } return false;">
     <td>#{{ match.id }}</td>
-    <td style="width: 68%"><a href="match/{{match.id}}"><em>{{ match.created_at }}</em></a></td>
+    <td style="width: 68%"><a><em>{{ match.created_at }}</em></a></td>
     <td>{{ match.server_name}}</td>
 </tr>
 {% endfor %}

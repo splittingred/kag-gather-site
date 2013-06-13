@@ -31,4 +31,7 @@ foreach ($placeholders['stats']['wins'] as $team => $wins) {
 $placeholders['stats']['winner'] = mostFrequent($ws);
 
 $site = new Site();
-$site->render('match/index.html',$placeholders);
+$site->render('match/index.html',$placeholders,array(
+    'skip_header' => true,
+    'skip_footer' => true,
+));
