@@ -11,8 +11,8 @@
 <table class="stats achievements">
 <tbody>
 {% for ach in achievements %}
-<tr onclick="location.href='achievement/{{ ach.url }}';">
-    <td class="name"><a href="achievement/{{ ach.url }}">{{ ach.name }}</a></td>
+<tr onclick="location.href='a/{{ ach.url }}';">
+    <td class="name"><a href="a/{{ ach.url }}">{{ ach.name }}</a></td>
     <td class="description">{{ ach.description }}</td>
     <td>{{ ach.users // 1 }} Users</td>
 </tr>
@@ -41,7 +41,7 @@ Page:
     <td class="created_at">{{ach.created_at}}</td>
     <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{ach.kag_user|url_encode}}&s=small" alt="" /></td>
     <td class=""><a href="u/{{ ach.kag_user|url_encode }}">{{ ach.kag_user }}</a></td>
-    <td class=""><strong><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></strong></td>
+    <td class=""><strong><a href="a/{{ ach.code|url_encode }}">{{ ach.name }}</a></strong></td>
     <td>{{ach.description}}</td>
 </tr>
 {% endfor %}

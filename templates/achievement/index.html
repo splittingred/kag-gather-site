@@ -10,59 +10,73 @@
     {% if ach.current %}
     <span class="current">{{ ach.name }}</span> {{ loop.last ? '' : ' -&gt; ' }}
     {% else %}
-    <span><a href="achievement/{{ ach.code }}">{{ ach.name }}</a></span> {{ loop.last ? '' : ' -&gt; ' }}
+    <span><a href="a/{{ ach.code }}">{{ ach.name }}</a></span> {{ loop.last ? '' : ' -&gt; ' }}
     {% endif %}
 {% endfor %}
 </div>
 <br />
 
-<div style="width: 49%; float: right; padding: 0 2px;">
-<h3>Related <a href="achievements.html">Achievements</a>:</h3>
+<div id="tabz" class="tabs">
+    <ul>
+        <li><a href="#tab-winners">Won By</a></li>
+        <li><a href="#tab-close-to">Close</a></li>
+        <li><a href="#tab-related">Related</a></li>
+    </ul>
 
-<table class="stats achievements">
-<tbody>
-{% for ach in related %}
-<tr onclick="location.href='achievement/{{ code|url_encode }}';">
-    <td class="name"><a href="achievement/{{ ach.code|url_encode }}">{{ ach.name }}</a></td>
-    <td class="description">{{ ach.description }}</td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
-</div>
+    <div id="tab-winners">
+        <h3>Won By ({{users.total}}):</h3>
 
-<div style="width: 49%">
-<h3>Won By ({{users.total}}):</h3>
+        <table class="stats">
+        <tbody>
+        {% for u,v in users.results %}
+        <tr onclick="location.href='u/{{ u|url_encode }}';">
+            <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
+            <td class="name" style="width: 40%"><a href="u/{{ u|url_encode }}">{{ u }}</a></td>
+            <td class="score">{{v}} times</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
 
-<table class="stats">
-<tbody>
-{% for u,v in users.results %}
-<tr onclick="location.href='u/{{ u|url_encode }}';">
-    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{u|url_encode}}&s=small" alt="" /></td>
-    <td class="name" style="width: 40%"><a href="u/{{ u|url_encode }}">{{ u }}</a></td>
-    <td class="score">{{v}} times</td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
+    <div id="tab-close-to">
+        <h3>Users Close To Achievement</h3>
+        <table class="stats">
+        <tbody>
+        {% for user,value in users_close %}
+        <tr onclick="location.href='u/{{ user|url_encode }}';">
+            <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{user|url_encode}}&s=small" alt="" /></td>
+            <td class="name" style="width: 40%"><a href="u/{{ user|url_encode }}">{{ user }}</a></td>
+            <td class="score">{{value}} times</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
 
-<br /><br />
-<h3>Users Close to Achievement:</h3>
 
+    <div id="tab-related">
+        <h3>Related <a href="achievements.html">Achievements</a>:</h3>
 
-<table class="stats">
-<tbody>
-{% for user,value in users_close %}
-<tr onclick="location.href='u/{{ user|url_encode }}';">
-    <td class="avatar-tiny"><img src="{{base_url}}avatar.php?u={{user|url_encode}}&s=small" alt="" /></td>
-    <td class="name" style="width: 40%"><a href="u/{{ user|url_encode }}">{{ user }}</a></td>
-    <td class="score">{{value}} times</td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
-
+        <table class="stats achievements">
+        <tbody>
+        {% for ach in related %}
+        <tr onclick="location.href='a/{{ code|url_encode }}';">
+            <td class="name"><a href="a/{{ ach.code|url_encode }}">{{ ach.name }}</a></td>
+            <td class="description">{{ ach.description }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
 </div>
 
 <br class="clear" />
 </div>
+
+
+<script type="text/javascript">
+  $(function() {
+    $( "#tabz" ).tabs();
+  });
+</script>

@@ -1,7 +1,9 @@
-$('a.tabLink').click(function(e) {
-    e.preventDefault();
-    var href = $(this).attr('href');
-    console.log(href);
-    //$("#tabz").tabs("url",this,href);
-    return false;
-});
+$.fn.__tabs = $.fn.tabs;
+$.fn.tabs = function (a, b, c, d, e, f) {
+	var base = location.href.replace(/#.*$/, '');
+	$('ul>li>a[href^="#"]', this).each(function () {
+		var href = $(this).attr('href');
+		$(this).attr('href', base + href);
+	});
+	$(this).__tabs(a, b, c, d, e, f);
+};
