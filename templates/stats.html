@@ -14,7 +14,7 @@
 {% for idx,rank in ranks %}
 {% for u in rank.users %}
 <tr onclick="location.href='u/{{ u.name|url_encode }}';">
-    <td class="rank">#{{idx + 1}}</td>
+    <td class="rank">#{{idx + 1 + page_offset}}</td>
     <td class="avatar"><img src="{{base_url}}avatar.php?u={{u.name|url_encode}}&s=small" alt="" /></td>
     <td class="name"><a href="u/{{ u.name|url_encode }}">{{u.clan}} {{ u.name }}</a></td>
     <td class="score">{{rank.score}}</td>
@@ -23,5 +23,10 @@
 {% endfor %}
 </tbody>
 </table>
+
+{% for page in radius(currentPage,3,totalPages) %}
+  <a href="stats.html?page={{ page }}">{{ page }}</a>
+  {{ loop.last ? '' : ' | ' }}
+{% endfor %}
 
 </div>
